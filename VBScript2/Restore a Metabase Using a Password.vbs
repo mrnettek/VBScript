@@ -1,0 +1,11 @@
+' Description: Restore the metabase using a backup named ScriptedBackup and a password of  ie456@k.
+
+
+Const MD_BACKUP_HIGHEST_VERSION = &HFFFFFFFE 
+
+strComputer = "LocalHost"
+Set objComputer = GetObject("IIS://" & strComputer & "")
+
+objComputer.RestoreWithPassword "ScriptedBackup", _
+    MD_BACKUP_HIGHEST_VERSION, 0, " ie456@k"
+

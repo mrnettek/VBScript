@@ -1,0 +1,6 @@
+' Description: Demonstration script that uses the FileSystemObject to delete a file. Script must be run on the local computer.
+
+
+Set objFSO = CreateObject("Scripting.FileSystemObject")
+objFSO.DeleteFile("C:\FSO\ScriptLog.txt")
+

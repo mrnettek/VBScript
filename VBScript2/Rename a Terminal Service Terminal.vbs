@@ -1,0 +1,14 @@
+' Description: Renames the Terminal Services terminal RDP-tcp (the default name) to Accounting.
+
+
+strComputer = "."
+Set objWMIService = GetObject("winmgmts:" _
+    & "{impersonationLevel=impersonate}!\\" & strComputer & "\root\cimv2")
+
+Set colItems = objWMIService.ExecQuery _
+    ("Select * from Win32_Terminal Where TerminalName = 'RDP-tcp'")
+
+For Each objItem in colItems
+    errResult = objItem.Rename("Accounting")
+Next
+

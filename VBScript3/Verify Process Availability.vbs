@@ -1,0 +1,15 @@
+' Description: Identifies whether or not a hypothetical process Database.exe is running.
+
+
+strComputer = "."
+Set objWMIService = GetObject("winmgmts:" _
+    & "{impersonationLevel=impersonate}!\\" & strComputer & "\root\cimv2")
+Set colProcesses = objWMIService.ExecQuery _
+    ("Select * from Win32_Process Where Name = 'Database.exe'")
+
+If colProcesses.Count = 0 Then
+    Wscript.Echo "Database.exe is not running."
+Else
+    Wscript.Echo "Database.exe is running."
+End If
+

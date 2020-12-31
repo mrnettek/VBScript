@@ -1,0 +1,22 @@
+' Description: Creates a well-known services (WKS) record on a DNS server.
+
+
+strDNSServer = "atl-dc-03.fabrikam.com"
+strContainer = "fabrikam.com"
+strOwner = "ftp.fabrikam.com"
+intRecordClass = 1
+intTTL = 600 
+strIPAddress = "192.168.1.150"
+strProtocol = "TCP"
+strServices = "FTP"
+ 
+strComputer = "."
+Set objWMIService = GetObject("winmgmts:" _
+    & "{impersonationLevel=impersonate}!\\" & strComputer & _
+        "\root\MicrosoftDNS")
+
+Set objItem = objWMIService.Get("MicrosoftDNS_WKSType")
+errResult = objItem.CreateInstanceFromPropertyData _
+    (strDNSServer, strContainer, strOwner, intRecordClass, intTTL, _
+        strIPAddress, strProtocol, strServices)
+

@@ -1,0 +1,16 @@
+' Description: Compacts all the virtual hard disks on a computer.
+
+
+On Error Resume Next
+
+Set objVS = CreateObject("VirtualServer.Application")
+set colVMs = objVS.VirtualMachines
+
+For Each objVM in colVMS
+    Set colHardDiskConnections = objVM.HardDiskConnections
+    For Each objDrive in colHardDiskConnections
+        Set objHardDisk = objDrive.HardDisk
+        objHardDisk.Compact()
+    Next  
+Next
+

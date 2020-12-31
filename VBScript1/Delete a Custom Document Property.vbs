@@ -1,0 +1,14 @@
+' Description: Deletes a custom property (TestProperty) from the summary information properties for a document named C:\Scripts\Test.doc.
+
+
+Set objPropertyReader = CreateObject("DSOleFile.PropertyReader")
+Set objDocument = objPropertyReader.GetDocumentProperties_
+    ("C:\Scripts\Test.doc")
+Set colCustomProperties = objDocument.CustomProperties
+
+For Each strProperty in colCustomProperties
+    If strProperty.Name = "TestProperty" Then
+        strProperty.Remove()
+    End If
+Next
+

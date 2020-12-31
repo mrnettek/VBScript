@@ -1,0 +1,14 @@
+' Description: Uses WMI to copy the folder C:\Scripts to D:\Archive.
+
+
+strComputer = "."
+Set objWMIService = GetObject("winmgmts:" _
+    & "{impersonationLevel=impersonate}!\\" & strComputer & "\root\cimv2")
+
+Set colFolders = objWMIService.ExecQuery( _
+    "Select * from Win32_Directory where Name = 'c:\\Scripts'")
+
+For Each objFolder in colFolders
+    errResults  = objFolder.Copy("D:\Archive")
+Next
+

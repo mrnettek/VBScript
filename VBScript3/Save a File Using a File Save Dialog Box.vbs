@@ -1,0 +1,18 @@
+' Description: Demonstration script that allows you to enter a file name in a File Save dialog box, and then saves a sample text file (consisting entirely of the current date) under that file name.
+
+
+Set objDialog = CreateObject("SAFRCFileDlg.FileSave")
+
+objDialog.FileName = "C:\Scripts\Script1.vbs"
+objDialog.FileType = "VBScript Script"
+intReturn = objDialog.OpenFileSaveDlg
+
+If intReturn Then
+    Set objFSO = CreateObject("Scripting.FileSystemObject")
+    Set objFile = objFSO.CreateTextFile(objDialog.FileName)
+    objFile.WriteLine Date
+    objFile.Close
+Else
+    Wscript.Quit
+End If
+

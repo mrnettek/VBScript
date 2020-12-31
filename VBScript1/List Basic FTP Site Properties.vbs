@@ -1,0 +1,18 @@
+' Description: Displays basic default information for FTP sites on an IIS server.
+
+
+strComputer = "."
+Set objWMIService = GetObject _
+    ("winmgmts:{authenticationLevel=pktPrivacy}\\" _
+        & strComputer & "\root\microsoftiisv2")
+
+Set colItems = objWMIService.ExecQuery _
+    ("Select * from IIsFtpServiceSetting")
+
+For Each objItem in colItems
+    Wscript.Echo "Connection Timeout: " & objItem.ConnectionTimeout
+    Wscript.Echo "Don't Log: " & objItem.DontLog
+    Wscript.Echo "Maximum Connections: " & objItem.MaxConnections
+    Wscript.Echo "Server Comment: " & objItem.ServerComment
+Next
+

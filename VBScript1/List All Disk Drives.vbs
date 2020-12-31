@@ -1,0 +1,10 @@
+' Description: Demonstration script that uses the FileSystemObject to return a list of all the disk drives installed on a computer. Script must be run on the local computer.
+
+
+Set objFSO = CreateObject("Scripting.FileSystemObject")
+Set colDrives = objFSO.Drives
+
+For Each objDrive in colDrives
+    Wscript.Echo "Drive letter: " & objDrive.DriveLetter
+Next
+

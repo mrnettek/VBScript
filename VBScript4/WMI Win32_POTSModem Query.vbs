@@ -1,0 +1,86 @@
+On Error Resume Next
+strComputer = "."
+Set objWMIService = GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+Set colItems = objWMIService.ExecQuery("Select * from Win32_POTSModem",,48)
+For Each objItem in colItems
+    Wscript.Echo "AnswerMode: " & objItem.AnswerMode
+    Wscript.Echo "AttachedTo: " & objItem.AttachedTo
+    Wscript.Echo "Availability: " & objItem.Availability
+    Wscript.Echo "BlindOff: " & objItem.BlindOff
+    Wscript.Echo "BlindOn: " & objItem.BlindOn
+    Wscript.Echo "Caption: " & objItem.Caption
+    Wscript.Echo "CompatibilityFlags: " & objItem.CompatibilityFlags
+    Wscript.Echo "CompressionInfo: " & objItem.CompressionInfo
+    Wscript.Echo "CompressionOff: " & objItem.CompressionOff
+    Wscript.Echo "CompressionOn: " & objItem.CompressionOn
+    Wscript.Echo "ConfigManagerErrorCode: " & objItem.ConfigManagerErrorCode
+    Wscript.Echo "ConfigManagerUserConfig: " & objItem.ConfigManagerUserConfig
+    Wscript.Echo "ConfigurationDialog: " & objItem.ConfigurationDialog
+    Wscript.Echo "CountriesSupported: " & objItem.CountriesSupported
+    Wscript.Echo "CountrySelected: " & objItem.CountrySelected
+    Wscript.Echo "CreationClassName: " & objItem.CreationClassName
+    Wscript.Echo "CurrentPasswords: " & objItem.CurrentPasswords
+    Wscript.Echo "DCB: " & objItem.DCB
+    Wscript.Echo "Default: " & objItem.Default
+    Wscript.Echo "Description: " & objItem.Description
+    Wscript.Echo "DeviceID: " & objItem.DeviceID
+    Wscript.Echo "DeviceLoader: " & objItem.DeviceLoader
+    Wscript.Echo "DeviceType: " & objItem.DeviceType
+    Wscript.Echo "DialType: " & objItem.DialType
+    Wscript.Echo "DriverDate: " & objItem.DriverDate
+    Wscript.Echo "ErrorCleared: " & objItem.ErrorCleared
+    Wscript.Echo "ErrorControlForced: " & objItem.ErrorControlForced
+    Wscript.Echo "ErrorControlInfo: " & objItem.ErrorControlInfo
+    Wscript.Echo "ErrorControlOff: " & objItem.ErrorControlOff
+    Wscript.Echo "ErrorControlOn: " & objItem.ErrorControlOn
+    Wscript.Echo "ErrorDescription: " & objItem.ErrorDescription
+    Wscript.Echo "FlowControlHard: " & objItem.FlowControlHard
+    Wscript.Echo "FlowControlOff: " & objItem.FlowControlOff
+    Wscript.Echo "FlowControlSoft: " & objItem.FlowControlSoft
+    Wscript.Echo "InactivityScale: " & objItem.InactivityScale
+    Wscript.Echo "InactivityTimeout: " & objItem.InactivityTimeout
+    Wscript.Echo "Index: " & objItem.Index
+    Wscript.Echo "InstallDate: " & objItem.InstallDate
+    Wscript.Echo "LastErrorCode: " & objItem.LastErrorCode
+    Wscript.Echo "MaxBaudRateToPhone: " & objItem.MaxBaudRateToPhone
+    Wscript.Echo "MaxBaudRateToSerialPort: " & objItem.MaxBaudRateToSerialPort
+    Wscript.Echo "MaxNumberOfPasswords: " & objItem.MaxNumberOfPasswords
+    Wscript.Echo "Model: " & objItem.Model
+    Wscript.Echo "ModemInfPath: " & objItem.ModemInfPath
+    Wscript.Echo "ModemInfSection: " & objItem.ModemInfSection
+    Wscript.Echo "ModulationBell: " & objItem.ModulationBell
+    Wscript.Echo "ModulationCCITT: " & objItem.ModulationCCITT
+    Wscript.Echo "ModulationScheme: " & objItem.ModulationScheme
+    Wscript.Echo "Name: " & objItem.Name
+    Wscript.Echo "PNPDeviceID: " & objItem.PNPDeviceID
+    Wscript.Echo "PortSubClass: " & objItem.PortSubClass
+    Wscript.Echo "PowerManagementCapabilities: " & objItem.PowerManagementCapabilities
+    Wscript.Echo "PowerManagementSupported: " & objItem.PowerManagementSupported
+    Wscript.Echo "Prefix: " & objItem.Prefix
+    Wscript.Echo "Properties: " & objItem.Properties
+    Wscript.Echo "ProviderName: " & objItem.ProviderName
+    Wscript.Echo "Pulse: " & objItem.Pulse
+    Wscript.Echo "Reset: " & objItem.Reset
+    Wscript.Echo "ResponsesKeyName: " & objItem.ResponsesKeyName
+    Wscript.Echo "RingsBeforeAnswer: " & objItem.RingsBeforeAnswer
+    Wscript.Echo "SpeakerModeDial: " & objItem.SpeakerModeDial
+    Wscript.Echo "SpeakerModeOff: " & objItem.SpeakerModeOff
+    Wscript.Echo "SpeakerModeOn: " & objItem.SpeakerModeOn
+    Wscript.Echo "SpeakerModeSetup: " & objItem.SpeakerModeSetup
+    Wscript.Echo "SpeakerVolumeHigh: " & objItem.SpeakerVolumeHigh
+    Wscript.Echo "SpeakerVolumeInfo: " & objItem.SpeakerVolumeInfo
+    Wscript.Echo "SpeakerVolumeLow: " & objItem.SpeakerVolumeLow
+    Wscript.Echo "SpeakerVolumeMed: " & objItem.SpeakerVolumeMed
+    Wscript.Echo "Status: " & objItem.Status
+    Wscript.Echo "StatusInfo: " & objItem.StatusInfo
+    Wscript.Echo "StringFormat: " & objItem.StringFormat
+    Wscript.Echo "SupportsCallback: " & objItem.SupportsCallback
+    Wscript.Echo "SupportsSynchronousConnect: " & objItem.SupportsSynchronousConnect
+    Wscript.Echo "SystemCreationClassName: " & objItem.SystemCreationClassName
+    Wscript.Echo "SystemName: " & objItem.SystemName
+    Wscript.Echo "Terminator: " & objItem.Terminator
+    Wscript.Echo "TimeOfLastReset: " & objItem.TimeOfLastReset
+    Wscript.Echo "Tone: " & objItem.Tone
+    Wscript.Echo "VoiceSwitchFeature: " & objItem.VoiceSwitchFeature
+Next
+

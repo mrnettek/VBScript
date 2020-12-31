@@ -1,0 +1,13 @@
+' Description: Uses WMI to create a registry key in the HKLM\SOFTWARE\System Admin Scripting Guide portion of the registry.
+
+
+Const HKEY_LOCAL_MACHINE = &H80000002
+
+strComputer = "."
+ 
+Set oReg=GetObject("winmgmts:{impersonationLevel=impersonate}!\\" & _ 
+    strComputer & "\root\default:StdRegProv")
+ 
+strKeyPath = "SOFTWARE\System Admin Scripting Guide"
+oReg.CreateKey HKEY_LOCAL_MACHINE,strKeyPath
+

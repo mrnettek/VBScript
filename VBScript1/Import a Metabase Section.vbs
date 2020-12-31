@@ -1,0 +1,20 @@
+' Description: Imports a section of the metabase using the password er$3qld9o.
+
+
+Const IMPORT_MERGE = 4
+
+strComputer = "."
+
+Set objWMIService = GetObject _
+    ("winmgmts:{authenticationLevel=pktPrivacy}\\" _
+        & strComputer & "\root\microsoftiisv2")
+
+Set colItems = objWMIService.ExecQuery _
+    ("Select * from IIsComputer")
+
+For Each objItem in colItems
+    objItem.Import "er$3qld9o", "C:\backups\export.xml", _
+        "/lm/logging/custom logging", _
+            "/lm/logging/custom logging", IMPORT_MERGE
+Next
+

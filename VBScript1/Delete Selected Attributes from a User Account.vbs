@@ -1,0 +1,13 @@
+' Description: Deletes selected attributes from a user account. Demonstrates how to delete single-valued attributes as well as how to delete a single entry from a multi-valued attribute.
+
+
+Const ADS_PROPERTY_DELETE = 4
+ 
+Set objUser = GetObject _
+   ("LDAP://cn=myerken,ou=management,dc=fabrikam,dc=com") 
+ 
+objUser.PutEx ADS_PROPERTY_DELETE, _
+   "otherTelephone", Array("(425) 555-1213") 
+objUser.PutEx ADS_PROPERTY_DELETE, "initials", Array("E.")
+objUser.SetInfo
+

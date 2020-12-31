@@ -1,0 +1,21 @@
+' Description: Lists performance properties for IIS application pools.
+
+
+strComputer = "."
+Set objWMIService = GetObject _
+    ("winmgmts:{authenticationLevel=pktPrivacy}\\" _
+        & strComputer & "\root\microsoftiisv2")
+
+Set colItems = objWMIService.ExecQuery _
+    ("Select * from IIsApplicationPoolsSetting")
+
+For Each objItem in colItems
+    Wscript.Echo "Application Pool Queue Length: " & _
+        objItem.AppPoolQueueLength
+    Wscript.Echo "CPU Action: " & objItem.CPUAction
+    Wscript.Echo "CPU Limit: " & objItem.CPULimit
+    Wscript.Echo "CPU Reset Interval: " & objItem.CPUResetInterval
+    Wscript.Echo "Idle Timeout: " & objItem.IdleTimeout
+    Wscript.Echo "Max Processes: " & objItem.MaxProcesses
+Next
+

@@ -1,0 +1,9 @@
+' Description: Configures the MyerKen Active Directory user account so that it never expires. This is done by setting the expiration date to January 1, 1970.
+
+
+Set objUser = GetObject _
+    ("LDAP://cn=MyerKen,ou=Management,dc=NA,dc=fabrikam,dc=com")
+
+objUser.AccountExpirationDate = "01/01/1970"
+objUser.SetInfo
+

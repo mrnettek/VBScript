@@ -1,0 +1,16 @@
+' Description: Determines the expiration dates for all the user accounts in a Windows NT 4.0 domain named Fabrikam.
+
+
+On Error Resume Next
+
+Set objDomain = GetObject("WinNT://fabrikam,domain")
+objDomain.Filter = Array("User")
+
+For Each objUser In objDomain
+   If IsNull(objUser.AccountExpirationDate) Then
+       Wscript.Echo objUser.Name, "Account has no expiration date."
+   Else
+       Wscript.Echo objUser.Name, objUser.AccountExpirationDate
+   End If
+Next
+

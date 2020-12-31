@@ -1,0 +1,13 @@
+' Description: Returns a list of all the folders on a computer. This can take 15 minutes or more to complete, depending on the number of folders on the computer.
+
+
+strComputer = "."
+Set objWMIService = GetObject("winmgmts:" _
+    & "{impersonationLevel=impersonate}!\\" & strComputer & "\root\cimv2")
+
+Set colFolders = objWMIService.ExecQuery("Select * from Win32_Directory")
+
+For Each objFolder in colFolders
+    Wscript.Echo objFolder.Name
+Next
+

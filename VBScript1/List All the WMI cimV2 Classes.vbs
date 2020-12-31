@@ -1,0 +1,11 @@
+' Description: Returns a list of all the WMI classes found in the cimv2 namespace.
+
+
+strComputer = "."
+Set objWMIService=GetObject("winmgmts:{impersonationLevel=impersonate}!\\" & _ 
+    strComputer & "\root\cimv2")
+ 
+For Each objclass in objWMIService.SubclassesOf()
+    Wscript.Echo objClass.Path_.Class
+Next
+

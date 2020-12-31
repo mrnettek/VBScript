@@ -1,0 +1,11 @@
+' Description: Creates a new Virtual Server floppy image.
+
+
+On Error Resume Next
+
+Const vmFloppyDiskImage_HighDensity = 2
+
+Set objVS = CreateObject("VirtualServer.Application")
+errReturn = objVS.CreateFloppyDiskImage _
+    ("C:\Virtual Machines\Images\\Test.vfd", vmFloppyDiskImage_HighDensity)
+

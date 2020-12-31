@@ -1,0 +1,14 @@
+' Description: Adds a new volume mount point for the folder W:\Scripts. Note that in the WQL query, you must use two  slashes rather than one, and you must also include two  slashes at the end of the folder path. Thus the folder X:\Scripts\WMI would be listed as X:\\Scripts\\WMI\\.
+
+
+strComputer = "."
+Set objWMIService = GetObject("winmgmts:" _
+    & "{impersonationLevel=impersonate}!\\" & strComputer & "\root\cimv2")
+
+Set colItems = objWMIService.ExecQuery _
+    ("Select * From Win32_Volume Where Name = 'D:\\'")
+
+For Each objItem in colItems
+    objItem.AddMountPoint("W:\\Scripts\\")
+Next
+
